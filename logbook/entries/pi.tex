@@ -1,0 +1,63 @@
+\section{Estimating $\pi$}
+
+\begin{center}
+    % \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Date} & \textbf{Description}                                 \\
+        \hline
+        May 23, 2026  & Created cargo project, implemented pi estimation     \\
+        \hline
+        May 24, 2026  & Created unit tests for pi estimation, created \LaTeX
+        logbook                                                              \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Goal}
+
+Calculate an estimate of $\pi$ to at least an accuracy of $3.14$.
+
+\subsection{Simulation}
+
+We will generate $\pi$ from its definition in the area of a circle:
+$A = \pi r^2$. Suppose we inscribe the circle in a square of side length $2r$.
+Let $p$ be the ratio of the area of the circle to the area of the square. Then
+we have
+
+\[
+    p = \frac{\pi r^2}{(2r)^2} = \frac{\pi}{4} \implies \pi = 4p.
+\]
+
+Indeed, we can estimate $p$ by randomly (uniformly) generating points in the
+square, and counting the fraction of points that fall inside the circle.
+
+Suppose we center the circle and the square at the origin, and fix the square to
+be aligned with the axis. Then we can generate points $(X_i, Y_i)$ where
+$X_i, Y_i \sim \text{Uniform}(-r, r)$. We can check if a point is inside the
+circle by checking if $X_i^2 + Y_i^2 \leq r^2$.
+
+Let $I_i$ be the indicator variable for the event that the $i$-th point is
+inside the circle. Then we can estimate $p$ as
+
+\[
+    \hat{p} = \frac{1}{n} \sum_{i=1}^n I_i.
+\]
+
+where $n$ is the total number of points generated. Finally, we estimate $\pi$ as
+
+\[
+    \hat{\pi} = 4 \hat{p} = \frac{4}{n} \sum_{i=1}^n I_i.
+\]
+
+
+\begin{note}{Reducing Scope}{}
+    Note that there is a rotational symmetry in the problem, so we can just
+    narrow the point generation to the first quadrant
+    ($X_i, Y_i \sim \text{Uniform}(0, r)$). The rest of the process is the same.
+\end{note}
+
+\subsection{Rust Implementation}
+
+The Rust implementation of the above is not particularly complex, just a simple
+loop to generate and count points.

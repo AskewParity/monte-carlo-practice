@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+% ---------------------------START COLORS---------------------------------------
+\definecolor{BoxBlue}{RGB}{58, 125, 182} 
+\definecolor{BoxGray}{RGB}{242, 242, 242}
+% ---------------------------END COLORS-----------------------------------------
+
+% ---------------------------START GEOMETRY-------------------------------------
+\geometry{margin=1in}
+% ---------------------------END GEOMETRY---------------------------------------
+
+% ---------------------------START FANCYHDR-------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{Monte Carlo Practice}
+\fancyhead[C]{}
+\fancyhead[R]{\sectionmarkformat}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{Logbook -- \thepage}
+\fancyfoot[R]{}
+
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+\newcommand{\sectionmarkformat}{\rightmark}
+
+\renewcommand{\headrulewidth}{0.02cm}
+\renewcommand{\footrulewidth}{0.02cm}
+% ---------------------------END FANCYHDR---------------------------------------
+
+% ---------------------------START TCOLORBOX------------------------------------
+\tcbuselibrary{theorems,skins}
+
+\newtcbtheorem[number within=section]{note}{Note}{
+    enhanced,
+    colback=BoxGray,
+    colframe=BoxBlue,
+    colbacktitle=BoxBlue,
+    coltitle=white,
+    fonttitle=\bfseries,
+    arc=2mm,
+    boxrule=0.5mm,
+    left=2mm, right=2mm,
+    top=2mm, bottom=2mm
+}{note}
+% ---------------------------END TCOLORBOX--------------------------------------
+
+
+\title{\textbf{Monte Carlo Practice}}
+\author{Christopher Lee}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\input{entries/pi.tex}
+
+\end{document}
