@@ -1,0 +1,27 @@
+# Rust
+/monte-carlo/target/
+/target/
+**/*.rs.bk
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Ignore final PDFs? Un-comment the line below if you don't want to track the generated PDFs
+*.pdf
+
+# MacOS
+.DS_Store
